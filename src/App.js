@@ -7,6 +7,7 @@ import "./dashboard.css";
 import Users from "./Usess";
 import Home from "./home";
 import UpdateUser from "./UpdateUser";
+import CreateUser from "./pages/CreateUser";
 function App() {
   return (
     <div className="container">
@@ -17,6 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="users" element={<Users />} />
           <Route path="users/:id" element={<UpdateUser />} />
+          <Route path="users/create" element={<CreateUser />} />
         </Route>
       </Routes>
     </div>

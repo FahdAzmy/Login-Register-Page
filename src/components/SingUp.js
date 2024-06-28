@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Form from "./Forms/Form";
+import "../signup.css";
 
 export default function SignUp() {
   return (

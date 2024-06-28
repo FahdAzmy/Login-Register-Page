@@ -17,15 +17,18 @@ export default function UpdateUser() {
   }, []);
 
   return (
-    <div className="father">
-      <Form
-        button="Update"
-        name={name}
-        email={email}
-        endpoint={`user/update/${id}`}
-        navigate="dashboard/users"
-        HasLocalStorage={false}
-      />
-    </div>
+    <>
+      <h1 style={{ textAlign: "center" }}>Update User</h1>
+      <div className="father">
+        <Form
+          button="Update"
+          name={name}
+          email={email}
+          endpoint={`user/update/${id}`}
+          navigate="dashboard/users"
+          HasLocalStorage={false}
+        />
+      </div>
+    </>
   );
 }
