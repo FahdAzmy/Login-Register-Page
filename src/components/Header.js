@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 export default function Header() {
-  function handleLogoOut() {
-    window.localStorage.removeItem("email");
-    window.location.pathname = "/";
-  }
+  // function handleLogoOut() {
+  //   window.localStorage.removeItem("email");
+  //   window.location.pathname = "/";
+  // }
   return (
     <nav
       style={{
@@ -36,28 +36,17 @@ export default function Header() {
           width: "300px",
         }}
       >
-        {!window.localStorage.getItem("email") ? (
-          <>
-            <Link
-              to="/register"
-              style={{ textAlign: "center" }}
-              className="res-btn"
-            >
-              Register
-            </Link>
-            <Link
-              to="/login"
-              style={{ textAlign: "center" }}
-              className="res-btn"
-            >
-              Login
-            </Link>
-          </>
-        ) : (
-          <div className="res-btn" onClick={handleLogoOut}>
-            Log out
-          </div>
-        )}
+        <Link
+          to="/register"
+          style={{ textAlign: "center" }}
+          className="res-btn"
+        >
+          Register
+        </Link>
+        <Link to="/login" style={{ textAlign: "center" }} className="res-btn">
+          Login
+        </Link>
+        : (<div className="res-btn">Log out</div>)
       </div>
     </nav>
   );

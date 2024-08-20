@@ -8,6 +8,7 @@ import Users from "./Usess";
 import Home from "./home";
 import UpdateUser from "./UpdateUser";
 import CreateUser from "./pages/CreateUser";
+import RequireAuth from "./requireAuth";
 function App() {
   return (
     <div className="container">
@@ -15,10 +16,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="users" element={<Users />} />
-          <Route path="users/:id" element={<UpdateUser />} />
-          <Route path="users/create" element={<CreateUser />} />
+        {/* {Protected Routes} */}
+        <Route element={<RequireAuth />}>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="users" element={<Users />} />
+            <Route path="users/:id" element={<UpdateUser />} />
+            <Route path="users/create" element={<CreateUser />} />
+          </Route>
         </Route>
       </Routes>
     </div>

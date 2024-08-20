@@ -1,18 +1,26 @@
 // import axios
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { user } from "./Context/Context";
 
 export default function Users() {
   //  Create Use State
   const [users, setUsers] = useState([]);
   const [runUseEffect, setRun] = useState(0);
   // Create Use Effect to Fetch Data
+  const context = useContext(user);
+  const token = context.auth.token;
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/user/show")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    axios
+      .get("http://127.0.0.1:8000/api/user/show", {
+        headers: {
+          Accept: "application/json",
+          Authorization: "Bearer" + token,
+        },
+      })
+      .then((data) => setUsers(data.data));
   }, [runUseEffect]);
   // Creacte Function to Delete USer
   async function deleteUser(id) {
